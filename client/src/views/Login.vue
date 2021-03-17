@@ -51,6 +51,7 @@
 <script lang="ts">
 import { alertController, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar,IonIcon } from '@ionic/vue';
 import {personCircleOutline,lockClosedOutline} from 'ionicons/icons';
+import {useStore} from 'vuex'
 export default {
   name: 'Folder',
   components: {
@@ -64,19 +65,22 @@ export default {
     IonIcon
   },
   setup(){
+      const store = useStore()
       const login = ()=>{
-         console.log('test')
+          console.log('test')
       }
 
       return {
           login,
           personCircleOutline,
           lockClosedOutline,
-          isLoading: true
+          isLoading: true,
+          store
       }
   },
     methods: {
-    async presentAlert() {
+        async presentAlert() {
+        console.log('Yo',this.store.state.signedIn)
       const alert = await alertController
         .create({
             cssClass: 'alerts',
