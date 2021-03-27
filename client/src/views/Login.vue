@@ -80,6 +80,7 @@ export default {
   },
     methods: {
         async presentAlert() {
+          // @ts-ignore
         console.log('Yo',this.store.state.signedIn)
       const alert = await alertController
         .create({
